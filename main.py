@@ -18,6 +18,12 @@ def main():
     # setup
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
+    
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    
+    Player.containers = (updatable, drawable)
+    
     player1 = Player(x=SCREEN_WIDTH / 2, y=SCREEN_HEIGHT / 2)
     delta_time = 0
 
@@ -26,10 +32,16 @@ def main():
             if event.type == pygame.QUIT:
                 return # allows the close button to work
         
-        player1.update(delta_time)
+        # update loop
+        for obj in updatable:
+            obj.update(delta_time)
         
         screen.fill(color=(0,0,0))
-        player1.draw(screen)
+        
+        # draw loop
+        for obj in drawable:
+            obj.draw(screen)
+
         pygame.display.flip() #last to update screen
         
         # limit to 60 fps
