@@ -3,6 +3,7 @@
 # this allows us to use code from
 # the open-source pygame library
 # throughout this file
+import sys
 import pygame
 from constants import *
 from player import Player
@@ -41,6 +42,11 @@ def main():
         # update loop
         for obj in updatable:
             obj.update(delta_time)
+        
+        for asteroid in asteroids:
+            if asteroid.collides_with(player1):
+                print("Game over!")
+                sys.exit()
         
         screen.fill(color=(0,0,0))
         
