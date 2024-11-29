@@ -8,6 +8,15 @@ class Player(CircleShape):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
         
+    def update(self, dt):
+        keys = pygame.key.get_pressed()
+        # left
+        if keys[pygame.K_a]:
+            self.rotate(dt)        
+        # right
+        if keys[pygame.K_d]:
+            self.rotate(-dt)
+        
     def draw(self, screen):
         pygame.draw.polygon(screen, color=(255,255,255), points=self.triangle(), width=2)
         
@@ -18,3 +27,6 @@ class Player(CircleShape):
         b = self.position - forward * self.radius - right
         c = self.position - forward * self.radius + right
         return [a, b, c]
+    
+    def rotate(self, delta_time):
+        self.rotation += PLAYER_TURN_SPEED * delta_time

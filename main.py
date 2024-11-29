@@ -26,6 +26,8 @@ def main():
             if event.type == pygame.QUIT:
                 return # allows the close button to work
         
+        player1.update(delta_time)
+        
         screen.fill(color=(0,0,0))
         player1.draw(screen)
         pygame.display.flip() #last to update screen
