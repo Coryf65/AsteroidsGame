@@ -9,3 +9,5 @@ TARGET_FPS = 60
 PLAYER_RADIUS = 20 # size of the players ship
 PLAYER_TURN_SPEED = 300
 PLAYER_SPEED = 200
+SHOT_RADIUS = 5 # bullet size
+PLAYER_SHOOT_SPEED = 500 # speed of bullet
